@@ -63,5 +63,21 @@ public abstract class BaseContract<TArgument, TContract>
         Validator.CheckGenericCondition<T, TException>(customCondition, (T)ArgumentValue, message);
         return _linker;
     }
+
+    public Linker<TContract> HasProperty(string propertyName, string? message = null)
+    {
+        Validator.CheckForNotNull(ArgumentValue, ArgumentName, message);
+        Validator.ContainsPropertyByName(ArgumentValue, propertyName, message);
+
+        return _linker;
+    }
+
+    public Linker<TContract> HasPropertyWithValue(string propertyName, object value, string? message = null)
+    {
+        Validator.CheckForNotNull(ArgumentValue, ArgumentName, message);
+        Validator.ContainsPropertyWithValue(ArgumentValue, propertyName, value, message);
+
+        return _linker;
+    }
 }
 
