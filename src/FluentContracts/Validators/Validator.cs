@@ -220,6 +220,15 @@ internal static partial class Validator
         ThrowHelper.ThrowArgumentNullException(propertyName, message);
     }
 
+    public static void ContainsMethod(object element, string methodName, string? message = null)
+    {
+        var method = element.GetType().GetMethod(methodName);
+
+        if (method is not null) return;
+
+        ThrowHelper.ThrowArgumentNullException(methodName, message);
+    }
+
     private static bool IsEqualTo<T>(this T a, T b)
     {
         return EqualityComparer<T>.Default.Equals(a, b);

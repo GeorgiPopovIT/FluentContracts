@@ -79,5 +79,13 @@ public abstract class BaseContract<TArgument, TContract>
 
         return _linker;
     }
+
+    public Linker<TContract> HasMethod(string methodName, string? message = null)
+    {
+        Validator.CheckForNotNull(ArgumentValue, ArgumentName, message);
+        Validator.ContainsMethod(ArgumentValue, methodName, message);
+
+        return _linker;
+    }
 }
 
