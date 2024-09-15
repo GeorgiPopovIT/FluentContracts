@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Bogus;
 using FluentAssertions;
 using FluentContracts.Contracts;
